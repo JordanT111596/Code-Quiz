@@ -89,8 +89,9 @@ function displayQuestions() {
 }
 
 function setQuestion(indexVal) {
-    questionEl.textContent = questionSet[questionSetIndex].question;
-    for (var i = 0; i < questionSet[questionSetIndex].answerList[i].length; i++) {
+    //sets question content to question from array
+    questionEl.textContent = questionSet[indexVal].question;
+    for (var i = 0; i < questionSet[indexVal].answerList[i].length; i++) {
         var answerBtn = document.createElement("button");
         answerBtn.textContent = questionSet[questionSetIndex].answerList[i];
         answerBtn.setAttribute("class", "btn btn-primary m-2");
