@@ -9,6 +9,7 @@ var mainEl = document.querySelector("main");
 
 var timerInterval;
 var time = 100;
+var questionSetIndex = 0;
 
 //create elements if needed
 
@@ -73,7 +74,7 @@ function gameStart() {
     if (event.target.matches("button")) {
         startButtonEl.setAttribute("style", "display: none !important");
         starterParagraphEl.setAttribute("style", "display: none !important");
-        
+
         timerInterval = setInterval(tickDown, 1000)
         displayQuestions();
     }
@@ -81,6 +82,21 @@ function gameStart() {
 
 function displayQuestions() {
     //Iterate through questions
+
+    for (var i = 0; i < questionSet.length; i++) {
+        setQuestion(i);
+    }
+}
+
+function setQuestion(indexVal) {
+    questionEl.textContent = questionSet[questionSetIndex].question;
+    for (var i = 0; i < questionSet[questionSetIndex].answerList[i].length; i++) {
+        var answerBtn = document.createElement("button");
+        answerBtn.textContent = questionSet[questionSetIndex].answerList[i];
+        answerBtn.setAttribute("class", "btn btn-primary m-2");
+        buttonGroupEl.appendChild(answerBtn);
+        buttonGroupEl.setAttribute("class", "btn-group-vertical");
+    }
 }
 
 function tickDown() {
