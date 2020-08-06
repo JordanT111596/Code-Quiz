@@ -72,10 +72,29 @@ startButtonEl.addEventListener("click", gameStart);
 function gameStart() {
     if (event.target.matches("button")) {
         startButtonEl.setAttribute("style", "display: none !important");
-        console.log("tester");
+        starterParagraphEl.setAttribute("style", "display: none !important");
+        
+        timerInterval = setInterval(tickDown, 1000)
+        displayQuestions();
     }
 }
 
+function displayQuestions() {
+    //Iterate through questions
+}
+
+function tickDown() {
+    time--;
+    timerEl.textContent = "Time left: " + time;
+
+    if (time <= 0) {
+        end();
+    }
+}
+
+function end() {
+    //Brings up screen for the intitals and save
+}
 //replace the starter info and button
 //append questions, variables, and buttons to the body
 
