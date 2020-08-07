@@ -126,6 +126,8 @@ function checkAnswer() {
         time = time - 10;
         questionSetIndex++;
     }
+    var oldButtons = document.getElementById("buttonGroup");
+    oldButtons.innerHTML = "";
     displayQuestions()
 }
 
