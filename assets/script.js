@@ -72,7 +72,7 @@ startButtonEl.addEventListener("click", gameStart);
 
 function gameStart() {
     if (event.target.matches("button")) {
-        startButtonEl.setAttribute("style", "display: none !important");
+        startButtonEl.remove();
         starterParagraphEl.setAttribute("style", "display: none !important");
 
         timerInterval = setInterval(tickDown, 1000)
@@ -81,23 +81,41 @@ function gameStart() {
 }
 
 function displayQuestions() {
-    //Iterate through questions
 
-    for (var i = 0; i < questionSet.length; i++) {
-        setQuestion(i);
+
+    var currentQuestion = questionSet[questionSetIndex];
+
+    //sets question content to question from array
+    questionEl.textContent = questionSet[questionSetIndex].question;
+    //sets button group to be vertical using bootstrap
+    buttonGroupEl.setAttribute("class", "btn-group-vertical");
+
+    //Iterate through questions
+    for (var i = 0; i < questionSet.length - 1; i++) {
+        setAnswers(i);
     }
 }
 
-function setQuestion(indexVal) {
-    //sets question content to question from array
-    questionEl.textContent = questionSet[indexVal].question;
-    for (var i = 0; i < questionSet[indexVal].answerList[i].length; i++) {
-        var answerBtn = document.createElement("button");
-        answerBtn.textContent = questionSet[questionSetIndex].answerList[i];
-        answerBtn.setAttribute("class", "btn btn-primary m-2");
-        buttonGroupEl.appendChild(answerBtn);
-        buttonGroupEl.setAttribute("class", "btn-group-vertical");
+function setAnswers(indexVal) {
+    var answerBtn = document.createElement("button");
+    answerBtn.textContent = questionSet[questionSetIndex].answerList[indexVal];
+    answerBtn.setAttribute("class", "btn btn-primary m-2");
+    answerBtn.setAttribute("data-index", indexVal);
+
+    answerBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        if (answerBtn.getAttribute("data-index") === questionSet[questionSetIndex].correctAnswer) {
+            console.log("it worked!");
+        }
+
+        else {
+            console.log("it also worked but you are wrong!");
+        }
+
     }
+    )
+
+    buttonGroupEl.appendChild(answerBtn);
 }
 
 function tickDown() {
@@ -107,6 +125,10 @@ function tickDown() {
     if (time <= 0) {
         end();
     }
+}
+
+function checkAnswer() {
+
 }
 
 function end() {
