@@ -6,6 +6,7 @@ var buttonGroupEl = document.querySelector("#buttonGroup");
 var startButtonEl = document.querySelector("#startButton");
 var containerDivEl = document.querySelector(".container");
 var mainEl = document.querySelector("main");
+var nameInput = document.querySelector(".form-control");
 
 var timerInterval;
 var time = 100;
@@ -126,13 +127,58 @@ function checkAnswer() {
         time = time - 10;
         questionSetIndex++;
     }
-    var oldButtons = document.getElementById("buttonGroup");
-    oldButtons.innerHTML = "";
+    buttonGroupEl.innerHTML = "";
+    
+    if (questionSetIndex === questionSet.length) {
+        return end();
+    }
     displayQuestions()
 }
 
 function end() {
     //Brings up screen for the intitals and save
+    clearInterval(timerInterval);
+
+    var nameBoxFormEl = document.createElement("form");
+    buttonGroupEl.appendChild(nameBoxFormEl);
+
+    var nameBoxEl = document.createElement("div");
+    nameBoxEl.setAttribute("class", "form-group");
+    nameBoxFormEl.appendChild(nameBoxEl);
+
+    var nameLabel = document.createElement("label");
+    nameLabel.setAttribute("for", "name-text");
+    nameBoxEl.appendChild(nameLabel);
+
+    var textForName = document.createElement("input");
+    textForName.setAttribute("type", "text");
+    textForName.setAttribute("placeholder", "Enter your name here!");
+    textForName.setAttribute("name", "name-text");
+    textForName.setAttribute("id", "name-text")
+    nameBoxEl.appendChild(textForName);
+
+    var submitBtn = document.createElement("button");
+    submitBtn.setAttribute("type", "submit");
+    submitBtn.setAttribute("class", "btn btn-primary mb-2");
+    submitBtn.textContent = "Submit";
+    nameBoxEl.appendChild(submitBtn);
+
+    submitBtn.addEventListener("click", storeScore);
+
+    questionEl.textContent = "Enter your name!";
+
+}
+
+function storeScore() {
+    event.preventDefault();
+    var textForName = document.querySelector("#name-text");
+    var name = textForName.value.trim();
+    
+    if (name === "") {
+        return;
+      }
+
+      
 }
 //replace the starter info and button
 //append questions, variables, and buttons to the body
