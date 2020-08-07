@@ -102,18 +102,7 @@ function setAnswers(indexVal) {
     answerBtn.setAttribute("class", "btn btn-primary m-2");
     answerBtn.setAttribute("data-index", indexVal);
 
-    answerBtn.addEventListener("click", function (event) {
-        event.preventDefault();
-        if (answerBtn.getAttribute("data-index") === questionSet[questionSetIndex].correctAnswer) {
-            console.log("it worked!");
-        }
-
-        else {
-            console.log("it also worked but you are wrong!");
-        }
-
-    }
-    )
+    answerBtn.addEventListener("click", checkAnswer);
 
     buttonGroupEl.appendChild(answerBtn);
 }
@@ -128,7 +117,16 @@ function tickDown() {
 }
 
 function checkAnswer() {
+    event.preventDefault();
+    if (parseInt(event.target.getAttribute("data-index")) === questionSet[questionSetIndex].correctAnswer) {
+        questionSetIndex++;
+    }
 
+    else {
+        time = time - 10;
+        questionSetIndex++;
+    }
+    displayQuestions()
 }
 
 function end() {
