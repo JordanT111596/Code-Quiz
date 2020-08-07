@@ -7,8 +7,6 @@
     <!--Links bootstrap CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
         integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
-    <!--Links local CSS-->
-    <link type="stylesheet" href="assets/style.css">
     <title>Highscores!</title>
 </head>
 
@@ -18,14 +16,17 @@
         <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand" href="../index.html">Start Over!</a>
         </nav>
+        <!--Bootstrap responsive container-->
         <div class="container">
+            <!--Row for all content-->
             <div class="row">
                 <div class="col-md-1">
                     <!--Empty space-->
                 </div>
+                <!--Column for highscore list-->
                 <div class="col-md-10" id="scoresHolder">
                     <ol class="list-group m-3" id="scoresList">
-
+                        <!--High scores will go here-->
                     </ol>
                     <button type="button" class="btn btn-primary" id="reset">Reset Scores</button>
                 </div>
@@ -34,6 +35,7 @@
                 </div>
             </div>
         </div>
+        <!--Calls js just for high scores-->
         <script src="./scores.js"></script>
     </main>
 </body>
