@@ -128,7 +128,7 @@ function checkAnswer() {
         questionSetIndex++;
     }
     buttonGroupEl.innerHTML = "";
-    
+
     if (questionSetIndex === questionSet.length) {
         return end();
     }
@@ -173,12 +173,22 @@ function storeScore() {
     event.preventDefault();
     var textForName = document.querySelector("#name-text");
     var name = textForName.value.trim();
-    
-    if (name === "") {
-        return;
-      }
 
-      
+    if (name) {
+        var localStorageHighScores = JSON.parse(window.localStorage.getItem("localStorageHighScores")) || [];
+
+        var newScore = {
+            name: name,
+            score: time
+        }
+
+        localStorageHighScores.push(newScore);
+        window.localStorage.setItem("localStorageHighScores", JSON.stringify(localStorageHighScores))
+
+        window.location.href = "assets/highscores.html";
+    }
+
+
 }
 //replace the starter info and button
 //append questions, variables, and buttons to the body
