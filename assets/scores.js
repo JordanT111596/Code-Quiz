@@ -17,10 +17,11 @@ function displayHighScores() {
     }
 }
 
-//just clears the local storage
+//just clears the local storage and refreshes the page
 function resetScores() {
     window.localStorage.clear();
     displayHighScores();
+    location.reload();
 }
 
 //calls function to display scores
