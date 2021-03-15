@@ -150,8 +150,8 @@ function checkAnswer() {
     //remove buttons so new buttons can have space to themselves
     buttonGroupEl.innerHTML = "";
 
-    //when you reach the end of the questions the game is over
-    if (questionSetIndex === questionSet.length) {
+    //when you reach the end of the questions or if there's no time remaining, the game is over
+    if (questionSetIndex === questionSet.length || time == 0) {
         return end();
     }
     //shows new set of questions if there's more to go
