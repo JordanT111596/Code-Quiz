@@ -186,7 +186,8 @@ function end() {
     textForName.setAttribute("type", "text");
     textForName.setAttribute("placeholder", "Enter your name here!");
     textForName.setAttribute("name", "name-text");
-    textForName.setAttribute("id", "name-text")
+    textForName.setAttribute("id", "name-text");
+    textForName.setAttribute("class", "m-3");
     nameBoxEl.appendChild(textForName);
 
     //creates, styles, and appends button for submit
