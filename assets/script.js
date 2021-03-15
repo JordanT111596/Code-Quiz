@@ -46,7 +46,7 @@ var questionSet = [
         correctAnswer: 0
     },
     {
-        question: "Who leads the NBA in points per game for the 2019-20 season?",
+        question: "Who lead the NBA in points per game for the 2019-20 season?",
         answerList: [
             "Bradley Beal",
             "Giannis Antetokounmpo",
@@ -160,6 +160,10 @@ function checkAnswer() {
 
 //function for Game Over
 function end() {
+
+    // clears answer choices when the game ends
+    buttonGroupEl.innerHTML = "";
+    
     //Brings up screen for the intitals and save
     clearInterval(timerInterval);
 
