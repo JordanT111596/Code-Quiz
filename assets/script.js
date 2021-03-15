@@ -232,6 +232,8 @@ function storeScore() {
 
         //redirect user to highscore page
         window.location.href = "assets/highscores.html";
+    } else if (!name) {
+        alert("C'mon now, everybody's got a name! Please enter SOMETHING!");
     }
 
 
